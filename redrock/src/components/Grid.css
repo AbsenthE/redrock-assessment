@@ -1,0 +1,80 @@
+/* components/Grid.css */
+/* 课表网格，时间轴 */
+
+/* 网格容器 */
+.grid-wrapper {
+    flex: 1;
+    /* 禁止滚动 */
+    overflow: hidden;
+    /* 底部间距,不贴底边 */
+    padding-bottom: 6px;
+}
+
+/* 加载文本 */
+.loading-text {
+    text-align: center;
+    margin-top: 100px;
+    color: #999;
+}
+
+/* 十三行八列网格表格 */
+.grid-table {
+    display: grid;
+    height: 100%;
+    /* 网格列布局,第一列宽24px,剩下平分 */
+    grid-template-columns: 24px repeat(7, 1fr);
+    /* 网格行布局,第一行高35px,剩下平分 */
+    grid-template-rows: 35px repeat(12, 1fr);
+    /* 格子空隙 */
+    gap: 3px;
+}
+
+/* 时间轴列容器,使子元素参与网格布局 */
+.time-axis-col {
+    display: contents;
+}
+
+/* 时间单元格 */
+.time-cell {
+    /* 固定第一列 */
+    grid-column: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 12px;
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+/* 左上角月份标识 */
+.month-cell {
+    /* 固定第一列 */
+    grid-column: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 15px;
+    color: var(--text-primary);
+
+}
+
+/* 日期行 */
+.date-header-row {
+    display: contents;
+}
+
+/* 日期单元格 */
+.date-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+    font-size: 12px;
+}
+
+/* 日期数字 */
+.date-cell .week-date {
+    font-size: 10px;
+    color: rgb(144, 156, 106);
+}

@@ -1,0 +1,61 @@
+/* App.css */
+
+/* 亮色主题 */
+:root {
+  --bg-primary: rgb(252, 245, 224);
+  --bg-secondary: #c0bd14;
+  --text-primary: rgb(82, 86, 65);
+  --text-secondary: #666;
+}
+
+/* 暗色主题 */
+body.dark-mode {
+  --bg-primary: rgb(50, 51, 49);
+  --bg-secondary: #fcfcf2;
+  --text-primary: rgb(245, 234, 204);
+  --text-secondary: #666;
+}
+
+/* 取消默认边距内边距 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 页面基础样式 */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+/* 根容器 */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 10px 12px 0 12px;
+  overflow: hidden;
+}
+
+/* 纸纹 */
+.paper-texture {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  mix-blend-mode: linear-burn;
+  opacity: 0.3;
+  background-repeat: repeat;
+  background-size: 300px 300px;
+}
+
+/* 暗色模式纸纹 */
+body.dark-mode .paper-texture {
+  opacity: 0.07;
+}

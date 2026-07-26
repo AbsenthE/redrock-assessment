@@ -1,0 +1,124 @@
+/* components/Sheet.css */
+/* 底部显示课程详情弹窗 */
+
+/* 全屏定位容器 */
+.sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+}
+
+/* 阴影绿 */
+.sheet-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0) 0%,
+            rgba(0, 0, 0, 0) 57%,
+            rgba(129, 161, 53, 0.5) 67%);
+}
+
+/* 面板 */
+.sheet-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40%;
+    background-color: var(--bg-primary);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+}
+
+/* 内容防止贴边 */
+.sheet-content {
+    padding: 20px 24px;
+}
+
+/* 标题行 */
+.sheet-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+/* 课程名,超出显示省略号 */
+.sheet-course-name {
+    font-size: 20px;
+    text-align: left;
+    width: 8em;
+    /* 多行截断 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+
+/* 编辑/删除 */
+.sheet-actions {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* 编辑按钮 */
+.sheet-edit-btn {
+    background-color: rgb(122, 145, 114);
+    border: 1px solid rgb(122, 145, 114);
+    color: #fbf9e7;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+
+.sheet-edit-btn:active {
+    opacity: 0.7;
+}
+
+/* 删除按钮 */
+.sheet-delete-btn {
+    background-color: rgb(148, 158, 53);
+    border: 1px solid rgb(148, 158, 53);
+    color: #fbf9e7;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-size: 14px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+
+.sheet-delete-btn:active {
+    opacity: 0.7;
+}
+
+/* 详情 */
+.sheet-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+}
+
+/* 详情标签，时间地点... */
+.sheet-label {
+    font-size: 15px;
+    color: #a8a8a5;
+}
+
+/* 详情内容 */
+.sheet-value {
+    font-size: 15px;
+    color: var(--text-primary);
+    font-weight: 500;
+}
