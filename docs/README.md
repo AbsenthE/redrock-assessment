@@ -1,16 +1,141 @@
-# React + Vite
+📚 学在重邮仿制版 - 使用文档
+一个轻量、美观的周课表查看与自定义工具，支持亮/暗主题、自定义活动、滑动切换周次。
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📖 项目简介
+学在重邮仿制版是一款基于 React 的单页应用，专为大学生设计。它可以显示固定课程表，同时允许用户在任意空白格子中添加自己的活动（如自习、会议、社团活动），并支持编辑、删除和持久化存储。界面采用仿纸张纹理风格，提供舒适的视觉体验。
 
-Currently, two official plugins are available:
+✨ 功能特性
+周课表展示：以网格形式清晰显示第 14~16 周的固定课程和自定义活动。
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+自定义活动：
 
-## React Compiler
+点击任意空白格子添加新活动（标题 + 备注/地点）。
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+点击活动卡片查看详情，并可修改或删除。
 
-## Expanding the ESLint configuration
+周次切换：
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+触摸/鼠标左右滑动即可切换周次（左滑下一周，右滑上一周）。
+
+一键“回到本周”（快速回到第 15 周）。
+
+主题切换：点击顶部太阳/月亮图标切换亮色/暗色模式，护眼且适配不同环境。
+
+数据持久化：自定义活动自动保存在浏览器本地（localStorage），关闭页面后不丢失。
+
+响应式设计：在手机、平板、电脑上均可正常使用。
+
+🚀 快速开始
+环境要求
+Node.js 16+
+
+npm 或 yarn
+
+安装与运行
+bash
+# 克隆项目
+git clone <repository-url>
+cd course-schedule-app
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm start
+启动后，在浏览器中访问 http://localhost:5173即可预览。
+
+🎯 使用指南
+1. 查看课表
+页面默认显示第 15 周。
+
+顶部左侧显示当前周次，右侧“回到本周”按钮在当前周时会自动隐藏。
+
+2. 添加自定义活动
+鼠标/触摸：点击课表上的任意空白格子（无课程的区域）。
+
+弹出两步表单：
+
+输入活动标题（必填）。
+输入备注或地点（可选）。
+点击底部箭头完成添加。
+
+新增的活动会显示在对应格子上，背景色为淡蓝灰色。
+
+3. 查看活动详情
+点击任意课程卡片（固定课程或自定义活动）。
+
+底部会弹出详情面板：
+
+固定课程：显示时间、周期、类型、地点等信息（来自模拟数据）。
+
+自定义活动：显示备注内容，并提供“修改”和“删除”按钮。
+
+4. 编辑/删除自定义活动
+在详情面板中点击“修改”，重新进入表单编辑标题或备注。
+
+点击“删除”即可移除该活动。
+
+5. 切换周次
+触摸屏：在课表区域左右滑动即可切换。
+
+6. 切换主题
+点击顶部左侧的太阳（亮色）或月亮（暗色）图标，主题立即切换，并保存偏好。
+
+📂 项目文件结构
+text
+src/
+├── components/                    # UI 组件（每个组件包含 .jsx 和 .css）
+│   ├── Header.jsx
+│   ├── Header.css
+│   ├── Grid.jsx
+│   ├── Grid.css
+│   ├── CourseCard.jsx
+│   ├── CourseCard.css
+│   ├── Sheet.jsx
+│   ├── Sheet.css
+│   ├── AddActivityForm.jsx
+│   └── AddActivityForm.css
+├── hooks/
+│   ├── useActivities.js     # 自定义活动 CRUD + localStorage
+│   └── useTheme.js          # 主题切换 + localStorage
+├── utils/
+│   ├── color.js             # 课程颜色计算
+│   └── gridHelpers.js       # 坐标转格子工具
+├── mock/
+│   └── data.js              # 固定课表模拟数据（scheduleMap, weekDatesMap）
+├── assets/                  # 图片资源（太阳、月亮、箭头、纸张纹理）
+├── App.jsx                  # 根组件，状态管理和布局
+├── App.css                  # 全局样式 + 主题变量
+└── main.jsx                 # 应用入口
+🛠️ 技术栈
+React 18（函数组件 + Hooks）
+
+Vite（极速构建工具）
+
+CSS 变量（主题切换）
+
+localStorage（数据持久化）
+
+CSS Grid（课表布局）
+
+📝 数据说明
+固定课程：来源于 src/mock/data.js 中的 scheduleMap，以周次为键，包含课程名称、时间、地点、类型、周期等字段。
+
+自定义活动：存储于浏览器的 localStorage，键名为 userActivities，每个活动包含：
+
+id（自动生成时间戳）
+
+week（所属周次）
+
+day（周一~周日）
+
+start（开始节次，1-12）
+
+duration（持续节数，默认1）
+
+name（标题）
+
+location（备注/地点）
+
+isActivity（固定为 true，用于区分）
+
